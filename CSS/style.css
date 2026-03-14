@@ -1,0 +1,243 @@
+/* Defino la paleta de colores que usaré en todo el sitio */
+:root{
+    --color-fondo:#050510;
+    --color-panel:rgba(10,15,30,0.65);
+    --color-neon:#00e5ff;
+    --color-secundario:#ff00ff;
+    --color-texto:#c8faff;
+}
+
+/* Ajusto el fondo general y la tipografía de la página */
+body{
+    margin:0;
+    background: radial-gradient(circle at center, #050510, #000);
+    color:var(--color-texto);
+    font-family:'Orbitron', sans-serif;
+}
+
+/* Centro el encabezado y marco una línea inferior */
+.encabezado{
+    text-align:center;
+    padding:1rem;
+    border-bottom:1px solid var(--color-neon);
+}
+
+/* Estilo el enlace del menú para que siga la estética neon */
+.encabezado nav a{
+    color:var(--color-neon);
+    text-decoration:none;
+    margin:0 10px;
+}
+
+/* Añado un efecto de brillo al pasar el ratón por el enlace */
+.encabezado nav a:hover{
+    text-shadow:0 0 10px var(--color-neon);
+}
+
+/* Defino la rejilla principal que organiza todo el moodboard */
+.todo{
+    display:grid;
+    grid-template-columns:1.2fr 1.2fr 1.2fr 1fr;
+    grid-template-areas:
+        "identidad identidad identidad imagen1"
+        "proyectos proyectos2 proyectos2 proyectos2"
+        "vision imagen2 imagen2 lista";
+    gap:20px;
+    padding:3%;
+    min-height:80vh;
+}
+
+/* Aplico el estilo base a todos los paneles del grid */
+.todo > *{
+    background:var(--color-panel);
+    border:1px solid var(--color-neon);
+    border-radius:20px;
+    padding:1rem;
+    box-shadow:
+        0 0 10px #00e5ff33,
+        inset 0 0 12px #00e5ff22;
+    transition:0.3s;
+}
+
+/* Hago que el panel donde paso el ratón destaque un poco más */
+.todo > *:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 18px var(--color-neon);
+}
+
+/* Asigno el área de grid para la sección de identidad */
+.identidad{ 
+    grid-area:identidad; 
+
+    /* Estilo el título de la identidad dentro del panel */
+    h2{
+        color:var(--color-neon);
+        letter-spacing:2px;
+    }
+
+    /* Ajusto el tamaño del texto de la información personal */
+    p{
+        font-size:0.9rem;
+    }
+}
+
+/* Asigno el área de grid para el bloque del logo personal */
+.imagen1{ 
+    grid-area:imagen1; 
+}
+
+/* Asigno el área de grid para la imagen de misiones */
+.proyectos{ 
+    grid-area:proyectos; 
+
+    /* Aplico transición suave a la imagen de misiones */
+    img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        border-radius:18px;
+        transition:0.4s;
+    }
+
+    /* Hago que la imagen de misiones se acerque un poco al pasar el ratón */
+    img:hover{
+        transform:scale(1.05);
+    }
+}
+
+/* Asigno el área de grid para el bloque de texto de proyectos */
+.proyectos2{ 
+    grid-area:proyectos2; 
+}
+
+/* Asigno el área de grid para la sección de visión futura */
+.vision{ 
+    grid-area:vision; 
+}
+
+/* Asigno el área de grid para la imagen del hacker */
+.imagen2{ 
+    grid-area:imagen2; 
+}
+
+/* Asigno el área de grid para la lista de intereses */
+.lista{ 
+    grid-area:lista; 
+}
+
+/* Elimino el margen por defecto de las figuras y controlo recorte */
+figure{
+    margin:0;
+    overflow:hidden;
+}
+
+/* Ajusto el estilo general del logo y las imágenes en figuras */
+figure img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+/* Centro el logo BL y limito su altura para que no rompa el diseño */
+.imagen1{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    max-height:260px;
+}
+
+/* Hago que el logo conserve proporciones y tenga un brillo neon */
+.imagen1 img{
+    width:80%;
+    height:auto;
+    object-fit:contain;
+    filter:drop-shadow(0 0 12px var(--color-neon));
+}
+
+/* Limito la altura máxima de la imagen de misiones para mantener equilibrio */
+.proyectos{
+    max-height:320px;
+}
+
+/* Limito la altura máxima de la imagen del hacker para que no domine todo */
+.imagen2{
+    max-height:420px;
+}
+
+/* Hago que la imagen del hacker rellene bien el panel */
+.imagen2 img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Aplico estilo general a los títulos para que resalten en neon */
+h2, h3{
+    color:var(--color-neon);
+    text-shadow:0 0 8px var(--color-neon);
+}
+
+/* Centro el contenido del pie de página y marco una línea superior */
+.pie{
+    text-align:center;
+    padding:1rem;
+    border-top:1px solid var(--color-neon);
+}
+
+/* Adapto la rejilla para pantallas tipo tablet */
+@media (max-width:900px){
+
+    /* Reorganizo las áreas de grid en dos columnas para tablet */
+    .todo{
+        grid-template-columns:1fr 1fr;
+        grid-template-areas:
+            "identidad imagen1"
+            "proyectos proyectos"
+            "proyectos2 proyectos2"
+            "vision imagen2"
+            "lista lista";
+    }
+
+    /* Ajusto ligeramente las alturas máximas para tablet */
+    .imagen1{
+        max-height:220px;
+    }
+
+    .proyectos{
+        max-height:280px;
+    }
+
+    .imagen2{
+        max-height:360px;
+    }
+}
+
+/* Adapto el diseño a móviles con una columna */
+@media (max-width:600px){
+
+    /* Coloco todos los bloques en una sola columna vertical */
+    .todo{
+        grid-template-columns:1fr;
+        grid-template-areas:
+            "identidad"
+            "imagen1"
+            "proyectos"
+            "proyectos2"
+            "vision"
+            "imagen2"
+            "lista";
+    }
+
+    /* Dejo que las imágenes crezcan en alto si lo necesitan en móvil */
+    .imagen1,
+    .proyectos,
+    .imagen2{
+        max-height:none;
+    }
+
+    /* Hago el logo un poco más pequeño en pantallas pequeñas */
+    .imagen1 img{
+        width:70%;
+    }
+}
